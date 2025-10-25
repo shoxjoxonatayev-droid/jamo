@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shohjahon Atayev — Portfolio (Neon Animations)</title>
+  <link rel="stylesheet" href="shohjahon.css" />
+</head>
+<body>
+  <!-- animated particle background -->
+  <canvas id="bg"></canvas>
+
+  <!-- top nav -->
+  <header class="nav">
+    <div class="brand">Shohjahon <span>Atayev</span></div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="theme-toggle" id="themeToggle" title="Toggle glow">🌗</div>
+  </header>
+
+  <!-- hero / typing -->
+  <main>
+    <section id="home" class="section hero">
+      <div class="hero-left">
+        <h1 class="title"><span id="typed"></span><span class="cursor">|</span></h1>
+        <p class="lead">Frontend Developer • Interactive UI • Modern Web</p>
+        <div class="hero-actions">
+          <button class="btn primary" onclick="scrollTo('projects')">Mening loyihalarim</button>
+          <button class="btn outline" onclick="scrollTo('contact')">Bog‘lanish</button>
+        </div>
+        <div class="badges">
+          <div class="badge">Open to work</div>
+          <div class="badge neon">Available for hire</div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="avatar-wrap">
+          <img class="avatar" src="https://static9.tgstat.ru/channels/_0/6b/6b78a026073610a990cfe8d46c7a2b59.jpg" alt="Shohjahon">
+          <div class="avatar-glow"></div>
+        </div>
+        <div class="profile-stats">
+          <div class="stat">
+            <div class="num" data-target="5">0</div>
+            <div class="label">Years</div>
+          </div>
+          <div class="stat">
+            <div class="num" data-target="12">0</div>
+            <div class="label">Projects</div>
+          </div>
+          <div class="stat">
+            <div class="num" data-target="150">0</div>
+            <div class="label">Commits</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section card-shadow reveal">
+      <h2>Men haqimda</h2>
+      <p>
+        Men Shohjahon — frontend va interaktiv interfeyslar ustida ishlaydigan dasturchiman. 
+        HTML, CSS, JavaScript bilan ishchi, animatsiyalar, UI/UX asoslari va performans optimizatsiyasi bilan shug‘ullanaman.
+      </p>
+      <ul class="about-list">
+        <li>React va zamonaviy JS kutubxonalar</li>
+        <li>Responsive hamda accessible interfeyslar</li>
+        <li>Git / GitHub — jamoada ishlash</li>
+      </ul>
+    </section>
+
+    <!-- Skills with animated bars -->
+    <section id="skills" class="section reveal">
+      <h2>Ko‘nikmalar</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>HTML</h3>
+          <div class="bar"><div class="bar-fill" data-fill="95"></div></div>
+        </div>
+        <div class="skill-card">
+          <h3>CSS (Animatsiyalar)</h3>
+          <div class="bar"><div class="bar-fill" data-fill="90"></div></div>
+        </div>
+        <div class="skill-card">
+          <h3>JavaScript</h3>
+          <div class="bar"><div class="bar-fill" data-fill="88"></div></div>
+        </div>
+        <div class="skill-card">
+          <h3>React</h3>
+          <div class="bar"><div class="bar-fill" data-fill="70"></div></div>
+        </div>
+        <div class="skill-card">
+          <h3>Git / GitHub</h3>
+          <div class="bar"><div class="bar-fill" data-fill="85"></div></div>
+        </div>
+        <div class="skill-card">
+          <h3>UI / UX</h3>
+          <div class="bar"><div class="bar-fill" data-fill="80"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects with 3D tilt -->
+    <section id="projects" class="section reveal">
+      <h2>Loyihalar</h2>
+      <div class="projects-grid">
+        <article class="project-card tilt" data-link="#">
+          <img src="https://picsum.photos/seed/p1/600/360" alt="">
+          <div class="project-body">
+            <h3>Portfolio V2 (Neon)</h3>
+            <p>Animatsiyali portfolio — HTML/CSS/JS.</p>
+            <div class="p-footer">
+              <a class="link" href="#" target="_blank">Ko‘rish</a>
+              <div class="tags"><span>#HTML</span><span>#CSS</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card tilt" data-link="#">
+          <img src="https://picsum.photos/seed/p2/600/360" alt="">
+          <div class="project-body">
+            <h3>To-do App</h3>
+            <p>LocalStorage bilan ishlovchi vazifalar ilovasi.</p>
+            <div class="p-footer">
+              <a class="link" href="#" target="_blank">Demo</a>
+              <div class="tags"><span>#JavaScript</span><span>#UX</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card tilt" data-link="#">
+          <img src="https://picsum.photos/seed/p3/600/360" alt="">
+          <div class="project-body">
+            <h3>Weather App</h3>
+            <p>API orqali ob-havo ma’lumotlarini ko‘rsatadi.</p>
+            <div class="p-footer">
+              <a class="link" href="#" target="_blank">Repo</a>
+              <div class="tags"><span>#API</span><span>#Fetch</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact with animated form -->
+    <section id="contact" class="section card-shadow reveal">
+      <h2>Aloqa</h2>
+      <form id="contactForm" class="contact-form">
+        <div class="row">
+          <label class="field">
+            <input type="text" id="name" required autocomplete="name"/>
+            <span>Ismingiz</span>
+          </label>
+          <label class="field">
+            <input type="email" id="email" required autocomplete="email" />
+            <span>Email</span>
+          </label>
+        </div>
+        <label class="field full">
+          <textarea id="message" rows="5" required></textarea>
+          <span>Xabar</span>
+        </label>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Yuborish</button>
+          <button type="reset" class="btn outline">Tozalash</button>
+        </div>
+        <div id="formResult" class="form-result"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 Shohjahon Atayev — All rights reserved.</footer>
+
+  <script src="shohjahon.js"></script>
+</body>
+</html>

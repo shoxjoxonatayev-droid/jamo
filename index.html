@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Group Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            background: #f4f4f9;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+        .dark-mode {
+            background: #121212;
+            color: #ffffff;
+        }
+        .dark-mode nav {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .dark-mode nav a, .dark-mode nav h3 {
+            color: #ffffff;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.5s ease;
+        }
+        nav a {
+            text-decoration: none;
+            color: #121212;
+            font-weight: 600;
+            margin-left: 2rem;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #3b82f6;
+        }
+        nav h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 8rem 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .box {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: #121212;
+        }
+        .dark-mode .box {
+            background: #1e1e1e;
+            color: #ffffff;
+        }
+        .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        .box img {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        .box h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .box p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        .dark-mode .box p {
+            color: #cccccc;
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            nav a {
+                margin: 0.5rem 0;
+            }
+            .container {
+                grid-template-columns: 1fr;
+                padding: 6rem 1rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#"><h1>Our Group</h1></a>
+        <h3>Creators</h3>
+        <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+    </nav>
+    <div class="container">
+        <a href="nuraddin.html" class="box">
+            <img src="user.png" alt="Nuraddin">
+            <h3>Abdusharipov Nuraddin</h3>
+            <p>JavaScript Developer, Full stack, Game developer, Web developer, Mobile app developer.</p>
+            <p>Skills:</p>
+            <p>HTML, CSS, JavaScript, Vue.js, Chart.js, React.js, React Native, Flutter (Dart), C#</p>
+        </a>
+        <a href="shohjahon.html" class="box">
+            <img src="user.png" alt="Shohjahon">
+            <h3>Otaboyev Shohjahon</h3>
+            <p>Full Stack Web Developer</p>
+            <p>Skills:</p>
+            <p>HTML, CSS, Django (Python)</p>
+        </a>
+        <a href="maqsad.html" class="box">
+            <img src="user.png" alt="Maqsad">
+            <h3>Saparboyev Maqsad</h3>
+            <p>UI/UX designer</p>
+            <p>Skills:</p>
+            <p>HTML, CSS, Design with css</p>
+        </a>
+        <a href="ibrat.html" class="box">
+            <img src="user.png" alt="Ibrat">
+            <h3>Shavkatov Ibrat</h3>
+            <p>Tester</p>
+            <p>Skills:</p>
+            <p>Tester</p>
+        </a>
+    </div>
+
+    <script>
+        gsap.from(".box", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        function toggleTheme() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

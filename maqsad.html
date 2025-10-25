@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuraddin Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Umumiy uslublar */
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',sans-serif;}
+body {background:#0f0f1e; color:#fff; overflow-x:hidden;}
+
+/* Smooth scroll */
+html {scroll-behavior:smooth;}
+
+/* Header */
+header {
+  position:fixed; top:0; width:100%; z-index:1000;
+  background:rgba(15,15,30,0.8); backdrop-filter:blur(10px);
+  display:flex; justify-content:space-between; align-items:center; padding:20px 40px;
+}
+header h1 {font-size:26px; color:#00fff7; font-weight:700;}
+nav ul {display:flex; list-style:none; gap:25px;}
+nav ul li a {color:#fff; font-weight:500; transition:0.3s;}
+nav ul li a:hover {color:#00fff7; text-shadow:0 0 10px #00fff7;}
+.menu-toggle {display:none; flex-direction:column; cursor:pointer;}
+.menu-toggle span {height:3px; width:25px; background:#fff; margin-bottom:5px; border-radius:3px;}
+@media(max-width:768px){
+  nav ul {display:none; flex-direction:column; position:absolute; top:70px; right:20px; background:rgba(15,15,30,0.9); padding:20px; border-radius:10px;}
+  nav ul.show {display:flex;}
+  .menu-toggle {display:flex;}
+}
+
+/* Hero */
+.hero {
+  height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+  text-align:center; position:relative;
+  background: linear-gradient(135deg, #00fff7, #ff00ff);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+@keyframes gradientBG{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+.hero h2 {font-size:52px; color:#fff; margin-bottom:15px; text-shadow:0 0 20px #00fff7; animation:fadeDown 1s ease;}
+.hero p {font-size:20px; max-width:650px; animation:fadeDown 1.5s ease; color:#e0e0e0;}
+.scroll-down {position:absolute; bottom:30px; font-size:18px; cursor:pointer; color:#fff; animation:bounce 2s infinite;}
+@keyframes fadeDown{0%{opacity:0; transform:translateY(-50px);}100%{opacity:1; transform:translateY(0);}}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
+
+/* Bo‘limlar */
+section{padding:100px 20px; max-width:1200px; margin:0 auto; opacity:0; transform:translateY(50px); transition:all 0.8s ease;}
+section.visible{opacity:1; transform:translateY(0);}
+
+/* Haqqimda */
+.about{display:flex; flex-wrap:wrap; align-items:center; gap:30px;}
+.about img{width:320px; border-radius:20px; box-shadow:0 0 30px #00fff7; transition:0.5s;}
+.about img:hover{transform:scale(1.05) rotate(2deg);}
+.about .text{flex:1;}
+
+/* Loyiha */
+.projects h2{text-align:center; margin-bottom:50px; font-size:40px; color:#00fff7;}
+.project-list{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px;}
+.project-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:15px; overflow:hidden;
+  box-shadow:0 5px 25px rgba(0,255,247,0.2);
+  transition: transform 0.5s, box-shadow 0.5s, background 0.5s;
+  cursor:pointer; backdrop-filter:blur(10px);
+}
+.project-card:hover{
+  transform:translateY(-15px) scale(1.02);
+  box-shadow:0 15px 35px rgba(0,255,247,0.5);
+  background:rgba(255,255,255,0.1);
+}
+.project-card img{width:100%; height:200px; object-fit:cover;}
+.project-card .content{padding:20px;}
+.project-card .content h3{margin-bottom:10px; color:#00fff7;}
+.project-card .content p{color:#e0e0e0; font-size:16px;}
+
+/* Kontakt */
+.contact{background:rgba(15,15,30,0.9); padding:60px 20px; text-align:center; border-radius:20px; box-shadow:0 0 40px #00fff7;}
+.contact h2{font-size:38px; margin-bottom:20px; color:#00fff7;}
+.contact p, .contact a{font-size:18px; color:#e0e0e0;}
+.contact a:hover{color:#fff;}
+.contact form{display:flex; flex-direction:column; max-width:450px; margin:20px auto;}
+.contact input, .contact textarea{padding:15px; margin-bottom:15px; border-radius:10px; border:none; outline:none;}
+.contact button{padding:15px; border:none; border-radius:10px; background:#00fff7; color:#0f0f1e; font-weight:700; cursor:pointer; transition:0.3s;}
+.contact button:hover{background:#ff00ff; color:#fff;}
+
+/* Footer */
+footer{text-align:center; padding:20px; margin-top:40px; color:#00fff7;}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Maqsadbek</h1>
+  <nav>
+    <ul id="nav-menu">
+      <li><a href="#hero">Bosh Sahifa</a></li>
+      <li><a href="#about">Haqqimda</a></li>
+      <li><a href="#projects">Loyihalar</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+    <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+  </nav>
+</header>
+
+<section class="hero" id="hero">
+  <h2>Salom, men Maqsadbek!</h2>
+  <p>Men web dizayn va front-end dasturchiman. Ushbu portfoliom orqali mening interaktiv va futuristik loyihalarimni ko‘rishingiz mumkin.</p>
+  <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Scroll down ⬇️</div>
+</section>
+
+<section class="about" id="about">
+  <img src="https://via.placeholder.com/320x400" alt="Nuraddin foto">
+  <div class="text">
+    <h2>Haqqimda</h2>
+    <p>Men zamonaviy web dizayn va interaktiv front-end loyihalarni yarataman. HTML, CSS, JavaScript va React bilan ishlashni yaxshi bilaman.</p>
+    <p>Mening maqsadim foydalanuvchilar uchun ajoyib va noyob web tajribalarni yaratishdir.</p>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <h2>Mening Loyihalarim</h2>
+  <div class="project-list">
+    <div class="project-card">
+      <img src="https://via.placeholder.com/400x200" alt="Loyiha 1">
+      <div class="content"><h3>Loyiha 1</h3><p>Responsive web sahifa va interaktiv animatsiyalar.</p></div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/400x200" alt="Loyiha 2">
+      <div class="content"><h3>Loyiha 2</h3><p>E-commerce front-end demo.</p></div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/400x200" alt="Loyiha 3">
+      <div class="content"><h3>Loyiha 3</h3><p>Interaktiv portfolio demo sahifa.</p></div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/400x200" alt="Loyiha 4">
+      <div class="content"><h3>Loyiha 4</h3><p>Landing page dizayni va animatsiya demo.</p></div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/400x200" alt="Loyiha 5">
+      <div class="content"><h3>Loyiha 5</h3><p>Web app interfeys dizayni.</p></div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/400x200" alt="Loyiha 6">
+      <div class="content"><h3>Loyiha 6</h3><p>Interaktiv karta va animatsiya demo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Kontakt</h2>
+  <p>Email: <a href="mailto:nuraddin@example.com">maqsad@example.com</a></p>
+  <p>Telefon: <a href="tel:+998901234567">+998 90 123 45 67</a></p>
+  <form>
+    <input type="text" placeholder="Ismingiz" required>
+    <input type="email" placeholder="Email" required>
+    <textarea placeholder="Xabaringiz" rows="4" required></textarea>
+    <button type="submit">Yuborish</button>
+  </form>
+</section>
+
+<footer>
+  &copy; 2025 Maqsadbek. Barcha huquqlar himoyalangan.
+</footer>
+
+<script>
+const toggle = document.getElementById('menu-toggle');
+const menu = document.getElementById('nav-menu');
+toggle.addEventListener('click',()=>{menu.classList.toggle('show');});
+
+// Scroll animatsiyalar
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('visible');}
+  });
+},{threshold:0.1});
+sections.forEach(section=>observer.observe(section));
+</script>
+</body>
+</html>

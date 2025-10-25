@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ibratbek Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== GLOBAL ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth; /* 🔥 silliq scroll */
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      color: #00f5ff;
+    }
+
+    section {
+      padding: 80px 10%;
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .logo span {
+      color: #00f5ff;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    /* 🔥 Aktiv menyu chizig‘i */
+    .navbar a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #00f5ff;
+      border-radius: 2px;
+    }
+
+    .navbar a:hover {
+      color: #00f5ff;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #141E30, #243B55);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #00f5ff, #ff00cc);
+      background-clip: text;
+      -webkit-background-clip: text; 
+      color: transparent;
+      -webkit-text-fill-color: transparent; 
+    }
+
+    .btn {
+      margin-top: 20px;
+      display: inline-block;
+      background: linear-gradient(90deg, #00f5ff, #ff00cc);
+      color: #fff;
+      padding: 10px 25px;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00f5ff;
+    }
+
+    /* ===== About ===== */
+    .about-container {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+    .about img {
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00f5ff50;
+    }
+    .about-text p {
+      line-height: 1.6;
+    }
+
+    /* ===== Skills ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .skill-card {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .skill-card:hover {
+      background: #00f5ff33;
+      transform: translateY(-5px);
+    }
+
+    /* ===== Projects ===== */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .project-card:hover .overlay {
+      opacity: 1;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: 0.4s;
+    }
+
+    /* ===== Contact ===== */
+    .contact-form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      resize: none;
+    }
+
+    .contact-form button {
+      background: linear-gradient(90deg, #00f5ff, #ff00cc);
+      border: none;
+      color: white;
+      padding: 12px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: rgba(0,0,0,0.4);
+    }
+
+    /* ===== Animations ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    .fade-in.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .navbar ul {
+        position: absolute;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        background: rgba(0,0,0,0.9);
+        flex-direction: column;
+        text-align: center;
+        transition: 0.3s;
+      }
+
+      .navbar ul.active {
+        left: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .about-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">Dev<span>Star</span></div>
+    <nav id="nav-menu">
+      <ul>
+        <li><a href="#home" class="nav-link active">Bosh sahifa</a></li>
+        <li><a href="#about" class="nav-link">Men haqimda</a></li>
+        <li><a href="#skills" class="nav-link">Ko‘nikmalar</a></li>
+        <li><a href="#projects" class="nav-link">Loyihalar</a></li>
+        <li><a href="#contact" class="nav-link">Aloqa</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-content fade-in">
+      <h1>Salom, men <span class="gradient-text">Ibratbek</span></h1>
+      <p>Frontend Developer | Dizayner | Innovator</p>
+      <a href="#projects" class="btn">Portfolio’ni ko‘rish</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about fade-in">
+    <h2>Men haqimda</h2>
+    <div class="about-container">
+      <img src="dunyoga-mashhur-7-ta-dasturchilar_6083c596a8ff0.jpeg" alt="Men" />
+      <div class="about-text">
+        <p>Men zamonaviy web texnologiyalar bilan ishlaydigan frontend dasturchiman. Kreativ dizayn va interaktiv funksiyalarni uyg‘unlashtirib, mukammal saytlar yaratishni maqsad qilganman.</p>
+        <p><b>Texnologiyalar:</b> HTML5, CSS3, JavaScript, React, Node.js</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="skills fade-in">
+    <h2>Ko‘nikmalarim</h2>
+    <div class="skills-grid">
+      <div class="skill-card">HTML5</div>
+      <div class="skill-card">CSS3 / SCSS</div>
+      <div class="skill-card">JavaScript (ES6+)</div>
+      <div class="skill-card">React</div>
+      <div class="skill-card">Node.js</div>
+      <div class="skill-card">Figma / UX Dizayn</div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="projects fade-in">
+    <h2>Loyihalarim</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x250" alt="Project 1">
+        <div class="overlay">
+          <h3>3D Portfolio</h3>
+          <p>3D effektlar va parallax animatsiyali shaxsiy sayt.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x250" alt="Project 2">
+        <div class="overlay">
+          <h3>Weather App</h3>
+          <p>API orqali real ob-havo ma’lumotlari.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x250" alt="Project 3">
+        <div class="overlay">
+          <h3>Landing Page</h3>
+          <p>Professional responsive marketing sahifasi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact fade-in">
+    <h2>Aloqa</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Ismingiz" required />
+      <input type="email" placeholder="Email manzilingiz" required />
+      <textarea placeholder="Xabaringiz..." required></textarea>
+      <button type="submit" class="btn">Yuborish</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Ibratbek | Yaratilgan sevgi bilan 💙</p>
+  </footer>
+
+  <script>
+    // Mobil menyu
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    menuToggle.addEventListener('click', () => {
+      navMenu.querySelector('ul').classList.toggle('active');
+    });
+
+    // Scroll animatsiyasi
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const onScroll = () => {
+      fadeElements.forEach(el => {
+        const rect = el.getBoundingClientRect().top;
+        if (rect < window.innerHeight - 100) {
+          el.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // 🔥 Aktiv menyuni yangilash (scroll paytida)
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
